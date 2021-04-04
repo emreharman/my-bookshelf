@@ -1,22 +1,57 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import Loading from "./Loading";
 import { getBooks } from "../actions/bookActions";
 
 const ListBooks = () => {
+  const [isSortAuthor, setIsSortAuthor] = useState(false);
   const state = useSelector((state) => state);
+  let sortedBooks = state.books.sort((a, b) => {
+    let fa = a.name.toLowerCase(),
+      fb = b.name.toLowerCase();
+
+    if (fa < fb) {
+      return -1;
+    }
+    if (fa > fb) {
+      return 1;
+    }
+    return 0;
+  });
+  if (isSortAuthor) {
+    sortedBooks = state.books.sort((a, b) => {
+      let fa = a.author.toLowerCase(),
+        fb = b.author.toLowerCase();
+
+      if (fa < fb) {
+        return -1;
+      }
+      if (fa > fb) {
+        return 1;
+      }
+      return 0;
+    });
+  }
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBooks);
   }, []);
-
+  const sortAuthor = () => {
+    setIsSortAuthor(!isSortAuthor);
+  };
   return (
     <div className="container mt-5">
       {state.fetched && state.books.length > 0 ? (
         <>
-          <div className="mt-5 mb-2 d-flex justify-content-end">
-            <Link to="/add-book" className="btn btn-primary ">
+          <div className="mt-5 mb-2 d-flex justify-content-evenly">
+            <button
+              onClick={sortAuthor}
+              className="btn btn-outline-primary mr-2"
+            >
+              Yazara Göre Sırala
+            </button>
+            <Link to="/add-book" className="btn btn-primary">
               Kitap Ekle
             </Link>
           </div>
@@ -34,7 +69,7 @@ const ListBooks = () => {
               </tr>
             </thead>
             <tbody>
-              {state.books.map((book, index) => (
+              {sortedBooks.map((book, index) => (
                 <tr key={book.id}>
                   <th>{index + 1}</th>
                   <td>{book.name}</td>
