@@ -1,0 +1,40 @@
+{
+  "books": [
+    {
+      "id": 1,
+      "name": "DOĞUM LEKESI",
+      "author": "ELIF HÜMEYRA AYDIN",
+      "publisher": "DERGAH",
+      "edition": {
+        "number": "1",
+        "place": "ISTANBUL",
+        "date": "EKIM 2019"
+      },
+      "isbn": "9789759959784"
+    },
+    {
+      "id": 2,
+      "name": "ALEF ",
+      "author": "JORGE LUIS BORGES",
+      "publisher": "ILETIŞIM",
+      "edition": {
+        "number": "2",
+        "place": "ISTANBUL",
+        "date": "2015"
+      },
+      "isbn": "9789750513404"
+    },
+    {
+      "id": 3,
+      "name": "INSANCIKLAR",
+      "author": "FYODOR DOSTOYEVSKI",
+      "publisher": "CAN",
+      "edition": {
+        "number": "2",
+        "place": "ISTANBUL",
+        "date": "NISAN 2013"
+      },
+      "isbn": "9789750716089"
+    }
+  ]
+}

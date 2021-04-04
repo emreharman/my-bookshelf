@@ -1,0 +1,6 @@
+export const BOOKS_FETCH_STARTED = "BOOKS_FETCH_STARTED";
+export const BOOKS_FETCH_SUCCESS = "BOOKS_FETCH_SUCCESS";
+export const BOOKS_FETCH_FAIL = "BOOKS_FETCH_FAIL";
+export const ADD_BOOK = "ADD_BOOK";
+export const UPDATE_BOOK = "UPDATE_BOOK";
+export const DELETE_BOOK = "DELETE_BOOK";
