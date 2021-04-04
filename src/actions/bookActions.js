@@ -7,13 +7,16 @@ import {
   UPDATE_BOOK,
   DELETE_BOOK,
 } from "../actions/actionTypes";
+import { getCategories } from "./categoryActions";
 const booksURL = "http://localhost:8000/books";
 
 export const getBooks = (dispatch) => {
   dispatch({ type: BOOKS_FETCH_STARTED });
   axios
     .get(booksURL)
-    .then((res) => dispatch({ type: BOOKS_FETCH_SUCCESS, payload: res.data }))
+    .then((res) => {
+      dispatch({ type: BOOKS_FETCH_SUCCESS, payload: res.data });
+    })
     .catch((err) => dispatch({ type: BOOKS_FETCH_FAIL, payload: err }));
 };
 

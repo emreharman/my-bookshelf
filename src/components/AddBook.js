@@ -12,10 +12,11 @@ const AddBook = (props) => {
   const [editionPlace, setEditionPlace] = useState("");
   const [editionDate, setEditionDate] = useState("");
   const [isbn, setIsbn] = useState("");
+  const [categoryId, setCategoryId] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     const book = {
-      id: state.books.length + 1,
+      id: state.books.books.length + 1,
       name,
       author,
       publisher,
@@ -25,13 +26,14 @@ const AddBook = (props) => {
         date: editionDate,
       },
       isbn,
+      categoryId: parseInt(categoryId),
     };
-    if (state.add === false) {
+    if (state.books.add === false) {
       dispatch((dispatch) => addBook(dispatch, book));
     }
   };
   useEffect(() => {
-    if (state.add || state.error != null) {
+    if (state.books.add) {
       props.history.push("/");
     }
   });
@@ -117,6 +119,22 @@ const AddBook = (props) => {
               value={isbn}
               onChange={(e) => setIsbn(e.target.value)}
             />
+          </div>
+          <div className="col">
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              onChange={(e) => setCategoryId(e.target.value)}
+            >
+              <option>Kategori Seçin</option>
+              {state.categories.categories.map((category) => {
+                return (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                );
+              })}
+            </select>
           </div>
         </div>
         <div

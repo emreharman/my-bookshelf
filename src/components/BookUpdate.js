@@ -6,7 +6,6 @@ const BookUpdate = (props) => {
   const state = useSelector((state) => state);
   const dispatch = useDispatch();
   const book = props.location.book;
-  console.log(book);
   const [name, setName] = useState(book.name);
   const [author, setAuthor] = useState(book.author);
   const [publisher, setPublisher] = useState(book.publisher);
@@ -14,6 +13,7 @@ const BookUpdate = (props) => {
   const [editionPlace, setEditionPlace] = useState(book.edition.place);
   const [editionDate, setEditionDate] = useState(book.edition.date);
   const [isbn, setIsbn] = useState(book.isbn);
+  const [categoryId, setCategoryId] = useState(book.categoryId);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,9 +28,9 @@ const BookUpdate = (props) => {
         date: editionDate,
       },
       isbn,
+      categoryId: parseInt(categoryId),
     };
-    console.log(updatedBook);
-    if (state.update === false) {
+    if (state.books.update === false) {
       dispatch((dispatch) => updateBook(dispatch, updatedBook));
     }
   };
@@ -38,7 +38,7 @@ const BookUpdate = (props) => {
     dispatch((dispatch) => deleteBook(dispatch, book));
   };
   useEffect(() => {
-    if (state.update || state.error != null || state.delete) {
+    if (state.books.update || state.books.delete) {
       props.history.push("/");
     }
   });
@@ -124,6 +124,22 @@ const BookUpdate = (props) => {
               value={isbn}
               onChange={(e) => setIsbn(e.target.value)}
             />
+          </div>
+          <div className="col">
+            <select
+              className="form-select"
+              aria-label="Default select example"
+              value={categoryId}
+              onChange={(e) => setCategoryId(e.target.value)}
+            >
+              {state.categories.categories.map((category) => {
+                return (
+                  <option key={category.id} value={category.id}>
+                    {category.name}
+                  </option>
+                );
+              })}
+            </select>
           </div>
         </div>
         <div

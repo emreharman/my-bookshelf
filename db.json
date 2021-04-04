@@ -10,7 +10,8 @@
         "place": "ISTANBUL",
         "date": "EKIM 2019"
       },
-      "isbn": "9789759959784"
+      "isbn": "9789759959784",
+      "categoryId": 1
     },
     {
       "id": 2,
@@ -22,7 +23,8 @@
         "place": "ISTANBUL",
         "date": "2015"
       },
-      "isbn": "9789750513404"
+      "isbn": "9789750513404",
+      "categoryId": 1
     },
     {
       "id": 3,
@@ -34,13 +36,18 @@
         "place": "ISTANBUL",
         "date": "NISAN 2013"
       },
-      "isbn": "9789750716089"
+      "isbn": "9789750716089",
+      "categoryId": 1
     }
   ],
-  "categories":[
-      {
-          "id":1,
-          "name":"ROMAN"
-      }
+  "categories": [
+    {
+      "id": 1,
+      "name": "ROMAN"
+    },
+    {
+      "id": 2,
+      "name": "HIKAYE"
+    }
   ]
 }
