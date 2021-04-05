@@ -85,15 +85,31 @@ const ListBooks = () => {
                     <td>{book.publisher}</td>
                     <td>{category.name}</td>
                     <td>
-                      <Link
-                        to={{
-                          pathname: "/update-book",
-                          book: book,
-                        }}
-                        className="btn btn-outline-primary btn-sm"
+                      <div
+                        class="btn-group"
+                        role="group"
+                        aria-label="Basic outlined example"
                       >
-                        Düzenle
-                      </Link>
+                        <Link
+                          to={{
+                            pathname: "/book-detail",
+                            book: book,
+                            category: category.name,
+                          }}
+                          className="btn btn-outline-warning btn-sm mr-1"
+                        >
+                          Detay
+                        </Link>
+                        <Link
+                          to={{
+                            pathname: "/update-book",
+                            book: book,
+                          }}
+                          className="btn btn-outline-primary btn-sm"
+                        >
+                          Düzenle
+                        </Link>
+                      </div>
                     </td>
                   </tr>
                 );

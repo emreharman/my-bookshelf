@@ -5,7 +5,7 @@ import { getBooks } from "./actions/bookActions";
 import { getCategories } from "./actions/categoryActions";
 import Navbar from "./components/Navbar";
 import ListBooks from "./components/ListBooks";
-import Loading from "./components/Loading";
+import BookDetail from "./components/BookDetail";
 import AddBook from "./components/AddBook";
 import BookUpdate from "./components/BookUpdate";
 
@@ -17,6 +17,7 @@ function App() {
         <Route path="/" exact component={ListBooks} />
         <Route path="/add-book" component={AddBook} />
         <Route path="/update-book" component={BookUpdate} />
+        <Route path="/book-detail" component={BookDetail} />
       </Switch>
     </Router>
   );
