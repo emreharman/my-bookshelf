@@ -78,8 +78,11 @@ const ListBooks = () => {
               <button onClick={sortAuthor} className="btn btn-outline-primary">
                 Yazara Göre Sırala
               </button>
-              <Link to="/add-category" className="btn btn-outline-primary">
-                Kategori Ekle
+              <Link
+                to="/category-operations"
+                className="btn btn-outline-primary"
+              >
+                Kategori İşlemleri
               </Link>
               <Link to="/add-book" className="btn btn-primary">
                 Kitap Ekle

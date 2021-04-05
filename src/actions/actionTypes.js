@@ -7,3 +7,6 @@ export const CATEGORY_FETCH_FAIL = "CATEGORY_FETCH_FAIL";
 export const ADD_BOOK = "ADD_BOOK";
 export const UPDATE_BOOK = "UPDATE_BOOK";
 export const DELETE_BOOK = "DELETE_BOOK";
+export const ADD_CATEGORY = "ADD_CATEGORY";
+export const UPDATE_CATEGORY = "UPDATE_CATEGORY";
+export const DELETE_CATEGORY = "DELETE_CATEGORY";

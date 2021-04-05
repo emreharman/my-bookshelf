@@ -38,6 +38,7 @@ export const updateBook = (dispatch, book) => {
 export const deleteBook = (dispatch, book) => {
   axios
     .delete(booksURL + "/" + book.id)
-    .then((res) => dispatch({ type: DELETE_BOOK, payload: book }));
+    .then((res) => dispatch({ type: DELETE_BOOK, payload: book }))
+    .catch((err) => dispatch({ type: BOOKS_FETCH_FAIL, payload: err }));
 };
 //dispatch({ type: BOOKS_FETCH_SUCCESS, payload: res.data })

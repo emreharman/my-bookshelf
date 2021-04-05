@@ -51,6 +51,19 @@
       },
       "isbn": "9786051736938",
       "categoryId": 1
+    },
+    {
+      "id": 5,
+      "name": "GÖĞE BAKMA DURAĞI",
+      "author": "TURGUT UYAR",
+      "publisher": "YKY",
+      "edition": {
+        "number": "6",
+        "place": "",
+        "date": ""
+      },
+      "isbn": "",
+      "categoryId": 4
     }
   ],
   "categories": [
@@ -61,6 +74,14 @@
     {
       "id": 2,
       "name": "HIKAYE"
+    },
+    {
+      "id": 3,
+      "name": "DENEME"
+    },
+    {
+      "id": 4,
+      "name": "ŞIIR"
     }
   ]
 }
