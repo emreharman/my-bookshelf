@@ -7,6 +7,7 @@ import { getCategories } from "../actions/categoryActions";
 
 const ListBooks = () => {
   const [isSortAuthor, setIsSortAuthor] = useState(false);
+  const [searchBar, setSearchBar] = useState("");
   const state = useSelector((state) => state);
   let sortedBooks = state.books.books.sort((a, b) => {
     let fa = a.name.toLowerCase(),
@@ -34,6 +35,15 @@ const ListBooks = () => {
       return 0;
     });
   }
+  const filteredBooks = sortedBooks.filter((book) => {
+    if (
+      book.name.includes(searchBar) ||
+      book.author.includes(searchBar) ||
+      book.publisher.includes(searchBar)
+    ) {
+      return true;
+    }
+  });
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getBooks);
@@ -46,19 +56,38 @@ const ListBooks = () => {
     <div className="container mt-5">
       {state.books.fetched && state.categories.fetched ? (
         <>
-          <div className="mt-5 mb-2 d-flex justify-content-evenly">
-            <button
-              onClick={sortAuthor}
-              className="btn btn-outline-primary mr-2"
-            >
-              Yazara Göre Sırala
-            </button>
-            <Link to="/add-book" className="btn btn-primary">
-              Kitap Ekle
-            </Link>
+          <div
+            style={{
+              width: "100%",
+              display: "flex",
+              justifyContent: "space-between",
+            }}
+            className="mb-5"
+          >
+            <div style={{ width: "40%" }}>
+              <input
+                className="form-control me-2"
+                type="search"
+                placeholder="Aramak istediğiniz kitap ya da yazarı girin"
+                aria-label="Search"
+                value={searchBar}
+                onChange={(e) => setSearchBar(e.target.value.toUpperCase())}
+              ></input>
+            </div>
+            <div className="btn-group" style={{ width: "40%" }}>
+              <button onClick={sortAuthor} className="btn btn-outline-primary">
+                Yazara Göre Sırala
+              </button>
+              <Link to="/add-category" className="btn btn-outline-primary">
+                Kategori Ekle
+              </Link>
+              <Link to="/add-book" className="btn btn-primary">
+                Kitap Ekle
+              </Link>
+            </div>
           </div>
-          <table className="table table-striped">
-            <thead>
+          <table className="table table-hover">
+            <thead className="table-light">
               <tr>
                 <th scope="col">Sıra No</th>
                 <th scope="col">Adı</th>
@@ -69,7 +98,14 @@ const ListBooks = () => {
               </tr>
             </thead>
             <tbody>
-              {sortedBooks.map((book, index) => {
+              {filteredBooks.length == 0 && (
+                <tr>
+                  <td colSpan="6" style={{ textAlign: "center" }}>
+                    Eşleşen Sonuç Yok
+                  </td>
+                </tr>
+              )}
+              {filteredBooks.map((book, index) => {
                 const category = state.categories.categories.find(
                   (category) => {
                     if (category.id == book.categoryId) {
@@ -86,7 +122,7 @@ const ListBooks = () => {
                     <td>{category.name}</td>
                     <td>
                       <div
-                        class="btn-group"
+                        className="btn-group"
                         role="group"
                         aria-label="Basic outlined example"
                       >
@@ -96,7 +132,7 @@ const ListBooks = () => {
                             book: book,
                             category: category.name,
                           }}
-                          className="btn btn-outline-warning btn-sm mr-1"
+                          className="btn btn-light btn-sm mr-1"
                         >
                           Detay
                         </Link>
@@ -105,7 +141,7 @@ const ListBooks = () => {
                             pathname: "/update-book",
                             book: book,
                           }}
-                          className="btn btn-outline-primary btn-sm"
+                          className="btn btn-primary btn-sm"
                         >
                           Düzenle
                         </Link>

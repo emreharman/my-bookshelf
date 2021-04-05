@@ -8,6 +8,7 @@ import ListBooks from "./components/ListBooks";
 import BookDetail from "./components/BookDetail";
 import AddBook from "./components/AddBook";
 import BookUpdate from "./components/BookUpdate";
+import AddCategory from "./components/AddCategory";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/add-book" component={AddBook} />
         <Route path="/update-book" component={BookUpdate} />
         <Route path="/book-detail" component={BookDetail} />
+        <Route path="/add-category" component={AddCategory} />
       </Switch>
     </Router>
   );

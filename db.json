@@ -38,6 +38,19 @@
       },
       "isbn": "9789750716089",
       "categoryId": 1
+    },
+    {
+      "id": 4,
+      "name": "BÜLBÜLÜ ÖLDÜRMEK",
+      "author": "HARPER LEE",
+      "publisher": "EPSILON",
+      "edition": {
+        "number": "2",
+        "place": "ISTANBUL",
+        "date": "MAYIS 2020"
+      },
+      "isbn": "9786051736938",
+      "categoryId": 1
     }
   ],
   "categories": [

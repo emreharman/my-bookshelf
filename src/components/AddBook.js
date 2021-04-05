@@ -28,7 +28,7 @@ const AddBook = (props) => {
       isbn,
       categoryId: parseInt(categoryId),
     };
-    if (state.books.add === false) {
+    if (state.books.add === false && categoryId != "") {
       dispatch((dispatch) => addBook(dispatch, book));
     }
   };
@@ -122,11 +122,12 @@ const AddBook = (props) => {
           </div>
           <div className="col">
             <select
+              required
               className="form-select"
               aria-label="Default select example"
               onChange={(e) => setCategoryId(e.target.value)}
             >
-              <option>Kategori Seçin</option>
+              <option value={categoryId}>Kategori Seçin</option>
               {state.categories.categories.map((category) => {
                 return (
                   <option key={category.id} value={category.id}>
